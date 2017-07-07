@@ -1,0 +1,26 @@
+<h1><small>Search result</small> {{ result | uppercase }}</h1>
+<hr>
+
+<div class="row" *ngIf="heroes.length == 0">
+    <div class="col-md-12">
+        <div class="alert alert-info" role="alert">
+            Search criteria not found for {{ result | uppercase }}
+        </div>
+        <a [routerLink]="['/heroes']" class="btn btn-outline-primary btn-block">Back to the Heroes</a>
+    </div>
+</div>
+
+<div class="card-columns">
+
+    <div class="card animated fadeIn fast" *ngFor="let hero of heroes; let i = index">
+  <img class="card-img-top img-fluid" [src]="hero.img" [alt]="hero.nombre">
+  <div class="card-block">
+    <h4 class="card-title">{{ hero.nombre }}</h4>
+    <p class="card-text">{{ hero.bio }}</p>
+    <p class="card-text"><small class="text-muted">{{ hero.aparicion }}</small></p>
+    <button (click)="seeHero(i)" class="btn btn-outline-primary btn-block my-2 my-sm-0" type="button">See more...</button>
+    <a [routerLink]="['/heroes']" class="btn btn-outline-primary btn-block">Go Back</a>
+  </div>
+</div>
+
+</div>
